@@ -37,46 +37,14 @@
 				<td><%=personList.get(i).getCompany() %></td>
 			</tr>
 			<tr>
-				<td><a href="">삭제</a></td>
-			</tr>
-			<tr>
-				<td>수정</td>
+				<td><a href="">[수정]</a></td>
+				<td><a href="">[삭제]</a></td>
 			</tr>
 		</table>
 		<br>	
 	<% 		
 	}
 	%>
-	<table border = "1" >
-		<tr>
-			<td>이름(name)</td>
-			<td>이효리</td>
-		</tr>
-		<tr>
-			<td>핸드폰(hp)</td>
-			<td>010-1111-1111</td>
-		</tr>
-		<tr>
-			<td>회사(company)</td>
-			<td>02-1111-1111</td>
-		</tr>
-	</table>
-	<br>
-	<table border = "1">
-		<tr>
-			<td>이름(name)</td>
-			<td>정우성</td>
-		</tr>
-		<tr>
-			<td>핸드폰(hp)</td>
-			<td>010-2222-2222</td>
-		</tr>
-		<tr>
-			<td>회사(company)</td>
-			<td>02-2222-2222</td>
-		</tr>
-	</table>
-	<br>
 	<a>추가번호 등록</a>
 </body>
 </html>

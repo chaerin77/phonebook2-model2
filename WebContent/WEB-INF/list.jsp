@@ -23,25 +23,27 @@
 	<%
 	for(int i=0; i<personList.size(); i++){
 	%>	
-		<table border = "1" >
-			<tr>
-				<td>이름(name)</td>
-				<td><%=personList.get(i).getName() %></td>
-			</tr>
-			<tr>
-				<td>핸드폰(hp)</td>
-				<td><%=personList.get(i).getHp() %></td>
-			</tr>
-			<tr>
-				<td>회사(company)</td>
-				<td><%=personList.get(i).getCompany() %></td>
-			</tr>
-			<tr>
-				<td><a href="">[수정]</a></td>
-				<td><a href="">[삭제]</a></td>
-			</tr>
-		</table>
-		<br>	
+		<form action="/phonebook2/pbc" method="get">
+			<table border = "1" >
+				<tr>
+					<td>이름(name)</td>
+					<td><%=personList.get(i).getName() %></td>
+				</tr>
+				<tr>
+					<td>핸드폰(hp)</td>
+					<td><%=personList.get(i).getHp() %></td>
+				</tr>
+				<tr>
+					<td>회사(company)</td>
+					<td><%=personList.get(i).getCompany() %></td>
+				</tr>
+				<tr>
+					<td><a href="/phonebook2/pbc?action=updateForm&no=<%=personList.get(i).getPersonId()%>">[수정]</a></td>
+					<td><a href="/phonebook2/pbc?action=delete&no=<%=personList.get(i).getPersonId()%>">[삭제]</a></td>
+				</tr>
+			</table>
+			<br>
+		</form>
 	<% 		
 	}
 	%>

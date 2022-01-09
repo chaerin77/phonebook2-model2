@@ -68,7 +68,7 @@ public class PhonebookController extends HttpServlet {
 			
 			PhoneDao phoneDao = new PhoneDao();//dao 메모리에 올리기
 			
-			int pid = Integer.parseInt(request.getParameter("personId"));//문자열 숫자로 바꾸기
+			int pid = Integer.parseInt(request.getParameter("no"));//문자열 숫자로 바꾸기
 			phoneDao.personDelete(pid);//dao의 delete메소드 사용해서 삭제
 			
 			response.sendRedirect("/phonebook2/pbc?action=list");//리다이렉트
@@ -76,11 +76,13 @@ public class PhonebookController extends HttpServlet {
 		}else if("updateForm".equals(act)) {
 			System.out.println("action=updateForm");
 			
-			PhoneDao phoneDao = new PhoneDao();
-			List<PersonVo> pvo = phoneDao.getPersonList();
+			int personId = Integer.parseInt(request.getParameter("no"));
+			
+			PhoneDao phoneDao = new PhoneDao(); 
+			PersonVo getPerson = phoneDao.getPerson(personId); //getPerson메소드 사용해서 정보 가져오기
 			
 			//어트리뷰트로 request에 넣어주기
-			request.setAttribute("personList", pvo); 
+			request.setAttribute("getP", getPerson); 
 			
 			//포워드
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
@@ -88,6 +90,21 @@ public class PhonebookController extends HttpServlet {
 			
 		}else if("update".equals(act)) {
 			System.out.println("action=update");
+			
+			PhoneDao phoneDao = new PhoneDao();
+			
+			//파라미터 값 받기
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			int personId = Integer.parseInt(request.getParameter("pId"));
+			
+			//PersonVo 메모리 올리고 dao메소드 사용
+			PersonVo pvo = new PersonVo(personId, name, hp, company);
+			phoneDao.personUpdate(pvo);
+			
+			//리다이렉트
+			response.sendRedirect("/phonebook2/pbc?action=list");
 			
 		}else {
 			System.out.println("파라미터값 얻음");
